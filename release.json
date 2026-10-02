@@ -1,0 +1,39 @@
+{
+  "hostImports": {
+    "view.tree": [
+      "/core/runtime.js",
+      "/util/view-plugin.js"
+    ],
+    "view.tree-parent": [
+      "/core/runtime.js",
+      "/util/view-plugin.js"
+    ]
+  },
+  "packages": [
+    {
+      "entry": "views/view-tree.js",
+      "files": {
+        "src/view.tree/views/view-tree.js": "views/view-tree.js"
+      },
+      "kind": "view",
+      "name": "view.tree",
+      "sha256": {
+        "src/view.tree/views/view-tree.js": "6451673518de4a440861800aca8a8e5feaef4b0f7ff3daf1f46a3c06f1dd473d"
+      },
+      "tag": "view-tree"
+    },
+    {
+      "entry": "views/view-tree-parent.js",
+      "files": {
+        "src/view.tree-parent/views/view-tree-parent.js": "views/view-tree-parent.js"
+      },
+      "kind": "view",
+      "name": "view.tree-parent",
+      "sha256": {
+        "src/view.tree-parent/views/view-tree-parent.js": "0fbf4dd788c2e88f700eacf2d3939349f3b1b77f5f97f28d2107a6d37d209f46"
+      },
+      "tag": "view-tree-parent"
+    }
+  ],
+  "repository": "view.tree"
+}
