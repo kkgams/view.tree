@@ -1,0 +1,171 @@
+{
+  "plugins": [
+    "https://github.com/kkgams/plugin.fs/releases/download/v0.2.0/plugin.fs.wasm",
+    "https://github.com/kkgams/plugin.layout/releases/download/v0.2.0/plugin.layout.wasm"
+  ],
+  "ui": {
+    "keys": [],
+    "theme": {
+      "url": "https://github.com/kkgams/theme.the98/releases/download/v0.2.6/theme.the98-0.2.6.zip#themes/the98.css"
+    },
+    "services": {
+      "ui-context": {
+        "url": "https://github.com/kkgams/ui-service.context/releases/download/v0.2.0/ui-service.context-0.2.0.zip#ui-plugins/context.js"
+      },
+      "ui-keys": {
+        "url": "https://github.com/kkgams/ui-service.keys/releases/download/v0.2.0/ui-service.keys-0.2.0.zip#ui-plugins/keys.js"
+      },
+      "ui-toast": {
+        "url": "https://github.com/kkgams/ui-service.toast/releases/download/v0.2.0/ui-service.toast-0.2.0.zip#ui-plugins/toast.js"
+      },
+      "ui-popup": {
+        "url": "https://github.com/kkgams/ui-service.popup/releases/download/v0.2.0/ui-service.popup-0.2.0.zip#ui-plugins/popup.js"
+      },
+      "ui-tooltip": {
+        "url": "https://github.com/kkgams/ui-service.tooltip/releases/download/v0.2.0/ui-service.tooltip-0.2.0.zip#ui-plugins/tooltip.js"
+      },
+      "ui-layout": {
+        "url": "https://github.com/kkgams/ui-service.layout/releases/download/v0.2.0/ui-service.layout-0.2.0.zip#ui-plugins/layout.js",
+        "config": {
+          "layout": "<view-tree />"
+        }
+      }
+    },
+    "views": {
+      "view-tree": {
+        "url": "src/view.tree/views/view-tree.js",
+        "label": "view-tree",
+        "internal": false,
+        "config": {
+          "zoom": {
+            "minScale": 0.1,
+            "maxScale": 4
+          },
+          "layout": {
+            "horizontalSpacing": 80,
+            "minVerticalSpacing": 24,
+            "contentPaddingX": 24,
+            "contentPaddingY": 24
+          },
+          "node": {
+            "minWidth": 120,
+            "minHeight": 48,
+            "paddingX": 12,
+            "paddingY": 10
+          },
+          "textLayout": {
+            "titleFontPx": 18,
+            "dataFontPx": 14,
+            "lineHeight": 20,
+            "maxVisibleData": 4
+          },
+          "theme": {
+            "clear": [
+              0.12,
+              0.12,
+              0.14,
+              1
+            ],
+            "text": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "textMuted": [
+              0.8,
+              0.8,
+              0.8,
+              1
+            ],
+            "selection": [
+              0.3,
+              0.6,
+              1,
+              1
+            ],
+            "edge": [
+              0.7,
+              0.7,
+              0.7,
+              1
+            ]
+          },
+          "edge": {
+            "handleMin": 30,
+            "handleMax": 120,
+            "halfWidthPx": 1,
+            "glowPx": 2,
+            "aaPx": 1
+          },
+          "text": {
+            "aa": 8,
+            "effect": "none",
+            "stroke": 2.5,
+            "glow": 2,
+            "shadowX": 4,
+            "shadowY": -4,
+            "source": {
+              "metaUrl": "dev-assets/font.json",
+              "atlasUrl": "dev-assets/font.png",
+              "channels": 3
+            }
+          },
+          "nineSlices": {
+            "idle": {
+              "textureUrl": "dev-assets/node-idle.png",
+              "left": 4,
+              "right": 4,
+              "top": 4,
+              "bottom": 4
+            },
+            "hover": {
+              "textureUrl": "dev-assets/node-hover.png",
+              "left": 4,
+              "right": 4,
+              "top": 4,
+              "bottom": 4
+            },
+            "selected": {
+              "textureUrl": "dev-assets/node-selected.png",
+              "left": 4,
+              "right": 4,
+              "top": 4,
+              "bottom": 4
+            }
+          }
+        }
+      },
+      "view-tree-parent": {
+        "url": "src/view.tree-parent/views/view-tree-parent.js",
+        "label": "view-tree-parent",
+        "internal": true
+      },
+      "view-files": {
+        "url": "https://github.com/kkgams/view.files/releases/download/v1.0.0/view.files-1.0.0.zip#views/view-files.js",
+        "label": "view-files",
+        "internal": false,
+        "config": {
+          "open": {
+            "default": "files-default"
+          }
+        }
+      },
+      "files-rename": {
+        "url": "https://github.com/kkgams/view.files/releases/download/v1.0.0/view.files-1.0.0.zip#views/files-rename.js",
+        "label": "files-rename",
+        "internal": true
+      },
+      "files-default": {
+        "url": "https://github.com/kkgams/view.files/releases/download/v1.0.0/view.files-1.0.0.zip#views/files-default.js",
+        "label": "files-default",
+        "internal": true
+      },
+      "view-props": {
+        "url": "https://github.com/kkgams/view.project-tools/releases/download/v0.2.0/view.props-0.2.0.zip#views/view-props.js",
+        "label": "Properties",
+        "internal": true
+      }
+    }
+  }
+}
