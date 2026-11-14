@@ -1,29 +1,34 @@
 ---
-title: Development
+title: Tree Views
 status: reference
 ---
 
-# view.tree
+# Tree Views
 
-## Local Project
+Tree editor and parent picker for [GAMS](https://github.com/kkgams/gams).
 
-Use Node.js 24 and Python 3 (standard library), plus Make, curl and unzip.
-`make open` additionally requires macOS Apple Silicon.
+| View | Source / release file | Screenshot | Author |
+| --- | --- | --- | --- |
+| `view-tree` | `src/view.tree/views/view-tree.js` / `view.tree.zip` | Not available | [GAMS contributors](https://github.com/kkgams/view.tree) |
+| `view-tree-parent` | `src/view.tree-parent/views/view-tree-parent.js` / `view.tree-parent.zip` | Not available | GAMS contributors |
 
-```sh
-make build
-make test
-make open
-```
+## Development
 
-Canonical JavaScript loads directly from `src/`; there is no compilation step.
-`make build` validates source hashes, imports, syntax and local Project configuration.
-`make open` runs that build and downloads the latest released GAMS Host into
-ignored `tools/gams.app` only when absent. It preserves accompanying notices in
-`tools/gams-release-notices` and explicitly sets `GAMS_APP_CWD` to this repository
-to open the local `gams.json`. Existing downloads are never updated implicitly;
-launch does not remove Gatekeeper quarantine. First use needs network access.
-Installed Units are cached in ignored `gams_modules/`. No sibling checkout is used.
+Requires Make, Node.js 24, Python 3, curl, zip, unzip and tar. Canonical JavaScript loads directly; no compilation or package installation is needed.
+
+| Command | Purpose |
+| --- | --- |
+| `make check` | Check JavaScript syntax and local Project configuration |
+| `make package` | Build incremental ZIPs and `SHA256SUMS` under `build.nosync/` |
+| `make open` | Open local `gams.json` in the released Host (macOS Apple Silicon) |
+| `make serve-docs` | Preview pinned wiki; independent `DOCS_PORT=8080` |
+| `make validate-docs` | Validate wiki |
+| `make docs` | Build `build.nosync/site/` |
+| `make clean` | Remove generated `build.nosync/`, marked Host downloads and configured completed Unit caches; refuse tracked files, symlinks and unidentified tools/caches |
+
+Supply the font atlas and node skins described in the inputs below before opening. Supplied inputs are not packaged. Existing Host downloads are never updated implicitly; notices remain beside the app. First use requires network. No sibling checkout is needed.
+
+## Supplied inputs
 
 Tree rendering requires user-supplied assets; this repository does not own a font atlas or node skins. Before `make open`, supply files configured in `ui.views.view-tree.config`:
 
@@ -33,32 +38,3 @@ Tree rendering requires user-supplied assets; this repository does not own a fon
 
 Adjust paths, channel count, slice borders and render settings in `gams.json` to match your assets. Launch fails early when a configured asset is missing; it does not generate, download or substitute artwork. The Host still validates and loads these assets. Once supplied, the editor starts an untitled tree. File selection and properties use pinned released Views; the parent picker is local.
 
-Inputs under `dev-assets/` are ignored and not packaged. Only sources listed in
-`release.json` are deployed by existing release tooling. Runtime/UI behavior,
-package identities and version-tag publication are unchanged. Native GUI behavior
-is a separate check; `make -n open` does not verify it.
-
-## Documentation
-
-```sh
-make serve-docs DOCS_PORT=8081
-make validate-docs
-make docs
-```
-
-These targets use pinned `justgook/wiki` v1.4.0 and this repository's `docs/`.
-The independent preview port defaults to 8080. `make docs` builds the portable
-site in ignored `build/site/`; `make build-docs` is the same build. Engine
-downloads also stay under ignored `build/`.
-Every push to `release` builds with `make docs` and deploys GitHub Pages through
-`.github/workflows/pages.yml`, independently of version tags and publication
-approval variables. Enable GitHub Pages with GitHub Actions as its source.
-
-## Checks and publication
-
-Run `make check` and `make test` with Node.js 24 and Python 3. Existing tests cover
-source/release contracts, not native GUI workflows. The tag workflow, licenses,
-notices and legal evidence are unchanged. Added development files and docs are
-not included in legal evidence snapshots; exact-input approval requires separate
-review before publication. Existing publication gates remain strict; see the
-repository's `PUBLISHING.md` for the owner-controlled release process.

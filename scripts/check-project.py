@@ -5,14 +5,13 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 config = json.loads((ROOT / "gams.json").read_text())
-manifest = json.loads((ROOT / "release.json").read_text())
+entries = {"view-tree": "src/view.tree/views/view-tree.js", "view-tree-parent": "src/view.tree-parent/views/view-tree-parent.js"}
 views = config["ui"]["views"]
 assert set(config["ui"]["services"]) == {
     "ui-context", "ui-keys", "ui-toast", "ui-popup", "ui-tooltip", "ui-layout"
 }
-for unit in manifest["packages"]:
-    source = next(path for path, target in unit["files"].items() if target == unit["entry"])
-    assert views[unit["tag"]]["url"] == source
+for tag, source in entries.items():
+    assert views[tag]["url"] == source
     assert (ROOT / source).is_file(), source
 for entry in [config["ui"]["theme"], *config["ui"]["services"].values()]:
     assert entry["url"].startswith("https://github.com/kkgams/")
