@@ -14,6 +14,7 @@ Requires Make, Node.js 24, Python 3, curl, zip, unzip and tar. Canonical JavaScr
 | Command | Purpose |
 | --- | --- |
 | `make check` | Check JavaScript syntax and local Project configuration |
+| `make test` | Run checks and parent-picker save/result/selection regressions |
 | `make package` | Build incremental ZIPs and `SHA256SUMS` under `build.nosync/` |
 | `make open` | Open local `gams.json` in the released Host (macOS Apple Silicon) |
 | `make serve-docs` | Preview pinned wiki; independent `DOCS_PORT=8080` |
